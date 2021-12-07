@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Image Bazaar</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="py-4 mb-5 bg-secondary text-center text-white">
+            <div class="mb-5">
+                <h1>Image Bazaar</h1>
+                <p>(Anyone Can Upload Their images On Image Bazaar...)</p>
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+                {{form}}
+                <input type="submit" class="btn btn-danger" value="Upload">
+            </form>
+        </div>
+
+        <div class="row">
+            {% for user_img in uploaded_img %}
+            <div class="col-sm-4">
+                <div class="card m-2">
+                    <img src="{{user_img.photo.url}}" alt="" class="card-img-top" height="300px">
+                    <div class="text-center card-footer">
+                        <small class="text-muted">{{user_img.date}}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+  </body>
+</html>
